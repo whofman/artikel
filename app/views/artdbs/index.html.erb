@@ -1,0 +1,36 @@
+
+<% form_for @search do |f| %>
+  <p>
+    <%= f.label :titel_like_all, "Titel:" %>
+    <%= f.text_field :titel_like_all, :size => 20 %>
+    <%= f.label :soort, "Soort:" %>
+    <%= f.select :soort, ["Software","Hardware","Aktueel","Info","Praktijk","Test","Tips"], :include_blank => true %>
+    <%= f.label :tijdschrift, "Tijdschrift:" %>
+    <%= f.select :tijdschrift, ["CT","CompTotaal","PCMagazine","PCM","Chip","PC Active","iCreate","MacFan","Blaise","Draad/2"], :include_blank => true %>
+    <%= f.label :jaargang_like, "Jaargang:" %>
+    <%= f.text_field :jaargang_like, :size => 5 %>
+
+    <%= f.submit "Zoek", :name => nil %>
+  </p>
+<% end %>
+
+<p><%= link_to "Nieuw artikel", new_artdb_path %></p>
+
+<table class="sortable" border="1">
+  <tr>
+    <th width="500">Titel</th>
+    <th>Soort</th>
+    <th>Tijdschrift</th>
+    <th>Jaargang</th>
+  </tr>
+  <% for artdb in @artdbs %>
+    <tr class="<%= cycle("even", "odd") %>">
+      <td><%= link_to artdb.titel, artdb %></td>
+      <td><%=h artdb.soort %></td>
+      <td><%= link_to artdb.tijdschrift, artdb.url %></td>
+      <td><%=h artdb.jaargang %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @artdbs %>

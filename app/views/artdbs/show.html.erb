@@ -1,0 +1,27 @@
+
+<p>
+  <strong>Titel:</strong>
+  <%=h @artdb.titel %>
+</p>
+<p>
+  <strong>Soort:</strong>
+  <%=h @artdb.soort %>
+</p>
+<p>
+  <strong>Tijdschrift:</strong>
+  <%=h @artdb.tijdschrift %>
+</p>
+<p>
+  <strong>Jaargang:</strong>
+  <%=h @artdb.jaargang %>
+</p>
+<p>
+  <strong>Url:</strong>
+  <%=h @artdb.url %>
+</p>
+
+<p>
+  <%= link_to "Wijzig", edit_artdb_path(@artdb) %> |
+  <%= link_to "Verwijder", @artdb, :confirm => 'Zeker weten?', :method => :delete %> |
+  <%= link_to "Terug", artdbs_path %>
+</p>

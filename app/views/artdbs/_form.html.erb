@@ -1,0 +1,22 @@
+<% form_for  @artdb, :html => {:name => 'new_artdb'} do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :titel, "Titel:" %>
+    <%= f.text_field :titel, :size => 40 %>
+  </p>
+  <p>
+    <%= f.label :tijdschrift, "Tijdschrift:" %>
+    <%= f.select :tijdschrift, ["CT","CompTotaal","PCMagazine","PCM","Chip","PC Active","iCreate","MacFan","Blaise","Draad/2"], {}, { :onChange => 'getSelectedItem(this.form);' } %>
+    <%= f.label :jaargang, "Jaargang:" %>
+    <%= f.select :jaargang, ["2010-01","2010-02","2010-03","2010-04","2010-05","2010-06","2010-07","2010-08","2010-09","2010-10","2010-11","2010-12"] %>
+    <%= f.label :soort, "Soort:" %>
+    <%= f.select :soort, ["Software","Hardware","Aktueel","Info","Praktijk","Test","Tips"] %>
+  </p>
+  <p>
+    <%= f.label :url, "URL:" %>
+    <%= f.text_field :url, :size => 60, :name => "url" %>
+  </p>
+  
+  <p><%= f.submit "Opslaan" %></p>
+<% end %>
